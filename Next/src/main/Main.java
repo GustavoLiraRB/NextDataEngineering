@@ -9,7 +9,7 @@ public class Main {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		//Teste banco
+		//Teste banco de dados
 		Historicosituacao his = new Historicosituacao();
 		his.setPessoa("João");
 		
