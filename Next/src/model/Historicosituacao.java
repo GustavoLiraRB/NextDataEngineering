@@ -2,7 +2,7 @@ package model;
 
 import java.io.Serializable;
 import javax.persistence.*;
-import java.sql.Timestamp;
+import java.util.Date;
 
 
 /**
@@ -16,37 +16,76 @@ public class Historicosituacao implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int id;
+	private String id;
 
-	private Timestamp data;
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name="_created")
+	private Date created;
 
-	private String pessoa;
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name="_updated")
+	private Date updated;
+
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date data;
+
+	//bi-directional many-to-one association to Pessoa
+	@ManyToOne
+	private Pessoa pessoa;
+
+	//bi-directional many-to-one association to Situacao
+	@ManyToOne
+	private Situacao situacao;
 
 	public Historicosituacao() {
 	}
 
-	public int getId() {
+	public String getId() {
 		return this.id;
 	}
 
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
-	public Timestamp getData() {
+	public Date getCreated() {
+		return this.created;
+	}
+
+	public void setCreated(Date created) {
+		this.created = created;
+	}
+
+	public Date getUpdated() {
+		return this.updated;
+	}
+
+	public void setUpdated(Date updated) {
+		this.updated = updated;
+	}
+
+	public Date getData() {
 		return this.data;
 	}
 
-	public void setData(Timestamp data) {
+	public void setData(Date data) {
 		this.data = data;
 	}
 
-	public String getPessoa() {
+	public Pessoa getPessoa() {
 		return this.pessoa;
 	}
 
-	public void setPessoa(String pessoa) {
+	public void setPessoa(Pessoa pessoa) {
 		this.pessoa = pessoa;
+	}
+
+	public Situacao getSituacao() {
+		return this.situacao;
+	}
+
+	public void setSituacao(Situacao situacao) {
+		this.situacao = situacao;
 	}
 
 }
