@@ -51,6 +51,12 @@ public class DummyDataGenerator implements Runnable {
 					}
 				}
 				System.out.println(Thread.currentThread().getName() + " registro " + i + " / " + points + " " + route);
+				try {
+				    Thread.sleep(200);
+				}
+				catch(InterruptedException ex){
+					//loop();
+				}
 				if (++i>points)
 					break;
 			}
