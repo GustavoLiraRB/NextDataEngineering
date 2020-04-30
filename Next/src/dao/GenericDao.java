@@ -63,12 +63,12 @@ public abstract class GenericDao<T, I extends Serializable> {
 	       tx.commit();
 	   }
 
-//	   public List<T> getList() {
-//	       CriteriaBuilder builder = entityManager.getCriteriaBuilder();
-//	       CriteriaQuery<T> query = builder.createQuery(persistedClass);
-//	       query.from(persistedClass);
-//	       return entityManager.createQuery(query).getResultList();
-//	   }
+	   public List<T> getList() {
+	       CriteriaBuilder builder = entityManager.getCriteriaBuilder();
+	       CriteriaQuery<T> query = builder.createQuery(persistedClass);
+	       query.from(persistedClass);
+	       return entityManager.createQuery(query).getResultList();
+	   }
 
 	   public T encontrar(I id) {
 	       return entityManager.find(persistedClass, id);
