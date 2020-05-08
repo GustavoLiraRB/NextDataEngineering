@@ -23,7 +23,7 @@ public class DbDummyDataGenMain extends Thread{
 
 		PessoaDao daoP = new PessoaDao();
 		Pessoa pessoa = new Pessoa();
-		pessoa.setId(userId);
+		pessoa.setPessoaId(userId);
 
 		daoP.salvar(pessoa);
 		

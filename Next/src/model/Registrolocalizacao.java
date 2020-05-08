@@ -3,6 +3,8 @@ package model;
 import java.io.Serializable;
 import javax.persistence.*;
 import java.util.Date;
+import java.sql.Timestamp;
+import java.math.BigInteger;
 
 
 /**
@@ -15,22 +17,18 @@ public class Registrolocalizacao implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
 	private String id;
 
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name="_created", columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP", updatable = false)
-	private Date created;
+	@Column(name="_created")
+	private Timestamp created;
 
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name="_updated", columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
-	private Date updated;
+	@Column(name="_updated")
+	private Timestamp updated;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date data;
 
-	@Lob
-	private String hashdata;
+	private BigInteger hashdata;
 
 	private String hashgeo;
 
@@ -38,32 +36,35 @@ public class Registrolocalizacao implements Serializable {
 
 	private double lng;
 
-	//bi-directional many-to-one association to Pessoa
-	@ManyToOne
-	private Pessoa pessoa;
+	@Column(name="PESSOA_ID")
+	private String pessoaId;
+
+	@Column(name="TRANSMISSAO_ID")
+	private String transmissaoId;
 
 	//bi-directional many-to-one association to Situacao
 	@ManyToOne
 	private Situacao situacao;
-
-	public Registrolocalizacao() {
-	}
 	
 	
 
-	public Registrolocalizacao(Date data, String hashdata, String hashgeo, double lat, double lng, Pessoa pessoa,
-			Situacao situacao) {
+	public Registrolocalizacao(Date data, BigInteger hashdata, String hashgeo, double lat, double lng, String pessoaId, Situacao situacao) {
 		super();
+		this.id = id;
+		this.created = created;
+		this.updated = updated;
 		this.data = data;
 		this.hashdata = hashdata;
 		this.hashgeo = hashgeo;
 		this.lat = lat;
 		this.lng = lng;
-		this.pessoa = pessoa;
+		this.pessoaId = pessoaId;
+		this.transmissaoId = transmissaoId;
 		this.situacao = situacao;
 	}
 
-
+	public Registrolocalizacao() {
+	}
 
 	public String getId() {
 		return this.id;
@@ -73,19 +74,19 @@ public class Registrolocalizacao implements Serializable {
 		this.id = id;
 	}
 
-	public Date getCreated() {
+	public Timestamp getCreated() {
 		return this.created;
 	}
 
-	public void setCreated(Date created) {
+	public void setCreated(Timestamp created) {
 		this.created = created;
 	}
 
-	public Date getUpdated() {
+	public Timestamp getUpdated() {
 		return this.updated;
 	}
 
-	public void setUpdated(Date updated) {
+	public void setUpdated(Timestamp updated) {
 		this.updated = updated;
 	}
 
@@ -97,11 +98,11 @@ public class Registrolocalizacao implements Serializable {
 		this.data = data;
 	}
 
-	public String getHashdata() {
+	public BigInteger getHashdata() {
 		return this.hashdata;
 	}
 
-	public void setHashdata(String hashdata) {
+	public void setHashdata(BigInteger hashdata) {
 		this.hashdata = hashdata;
 	}
 
@@ -129,12 +130,20 @@ public class Registrolocalizacao implements Serializable {
 		this.lng = lng;
 	}
 
-	public Pessoa getPessoa() {
-		return this.pessoa;
+	public String getPessoaId() {
+		return this.pessoaId;
 	}
 
-	public void setPessoa(Pessoa pessoa) {
-		this.pessoa = pessoa;
+	public void setPessoaId(String pessoaId) {
+		this.pessoaId = pessoaId;
+	}
+
+	public String getTransmissaoId() {
+		return this.transmissaoId;
+	}
+
+	public void setTransmissaoId(String transmissaoId) {
+		this.transmissaoId = transmissaoId;
 	}
 
 	public Situacao getSituacao() {

@@ -21,7 +21,7 @@ public class Main {
 		 while (true) {
 			 System.out.println("Tecle:");
 			 System.out.println("0 - para sair");
-			 System.out.println("1 - para preencher banco com dados simulados");
+			 System.out.println("1 - para preencher banco com dados simulados (as rotas devem estar no C:)");
 			 System.out.println("2 - para marcar pessoa como confirmado");
 //			 System.out.println("3 - para inseri ponto manual pessoa");
 			 int opcao = sc.nextInt();
@@ -53,15 +53,15 @@ public class Main {
 				 lista = daoP.getList();
 
 				 for (int i = 0; i < lista.size(); i++) {
-					System.out.println(i+1 + " - Pessoa ID: " + lista.get(i).getId());
+					System.out.println(i+1 + " - Pessoa ID: " + lista.get(i).getPessoaId());
 				 }
 				 System.out.println("Escolha a pessoa pelo número");
 				 int pessoaID = sc.nextInt();
 				 Pessoa pessoa = lista.get(pessoaID - 1);
 				 
 				 System.out.println("Digite a data de confirmação (DD/MM/AAAA)");
-//				 String dataScanner = sc.next();
-				 String dataScanner = "01/01/2020";
+				 String dataScanner = sc.next();
+//				 String dataScanner = "08/01/2020";
 				 DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
 				 Date data = null;
 				 
@@ -73,15 +73,15 @@ public class Main {
 				 }
 				 
 				 System.out.println("Digite quantos dias antes e depois deve ser marcado como contaminado");
-//				 int dias = sc.nextInt();
-				 int dias = 2;
+				 int dias = sc.nextInt();
+//				 int dias = 1;
 				 
 				 RegistrolocalizacaoDao daoR = new RegistrolocalizacaoDao();
 				 boolean resultado = false;
 				 if (data != null) {
 					 resultado = daoR.marcarInfectado(pessoa, data, dias);
 				 }
-				 System.out.println("Dados inseridos" + resultado);
+				 System.out.println("Dados inseridos: " + resultado);
 				 break;
 			 }
 		 }

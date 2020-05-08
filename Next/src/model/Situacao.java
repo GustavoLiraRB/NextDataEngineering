@@ -2,7 +2,7 @@ package model;
 
 import java.io.Serializable;
 import javax.persistence.*;
-import java.util.Date;
+import java.sql.Timestamp;
 import java.util.List;
 
 
@@ -16,16 +16,13 @@ public class Situacao implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
 
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name="_created", columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP", updatable = false)
-	private Date created;
+	@Column(name="_created")
+	private Timestamp created;
 
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name="_updated", columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
-	private Date updated;
+	@Column(name="_updated")
+	private Timestamp updated;
 
 	private String descricao;
 
@@ -52,19 +49,19 @@ public class Situacao implements Serializable {
 		this.id = id;
 	}
 
-	public Date getCreated() {
+	public Timestamp getCreated() {
 		return this.created;
 	}
 
-	public void setCreated(Date created) {
+	public void setCreated(Timestamp created) {
 		this.created = created;
 	}
 
-	public Date getUpdated() {
+	public Timestamp getUpdated() {
 		return this.updated;
 	}
 
-	public void setUpdated(Date updated) {
+	public void setUpdated(Timestamp updated) {
 		this.updated = updated;
 	}
 

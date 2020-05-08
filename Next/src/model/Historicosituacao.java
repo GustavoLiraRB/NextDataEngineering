@@ -15,7 +15,6 @@ public class Historicosituacao implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
 	private String id;
 
 	@Temporal(TemporalType.TIMESTAMP)
@@ -31,6 +30,7 @@ public class Historicosituacao implements Serializable {
 
 	//bi-directional many-to-one association to Pessoa
 	@ManyToOne
+	@JoinColumn(name="PESSOA_ID")
 	private Pessoa pessoa;
 
 	//bi-directional many-to-one association to Situacao

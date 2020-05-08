@@ -14,7 +14,6 @@ public class Limitesdeslocamento implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
 	private String id;
 
 	private String hashgeo;
@@ -27,6 +26,7 @@ public class Limitesdeslocamento implements Serializable {
 
 	//bi-directional many-to-one association to Pessoa
 	@ManyToOne
+	@JoinColumn(name="PESSOA_ID")
 	private Pessoa pessoa;
 
 	public Limitesdeslocamento() {
