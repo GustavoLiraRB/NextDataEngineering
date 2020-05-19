@@ -13,9 +13,25 @@ import dao.RegistrolocalizacaoDao;
 import model.Pessoa;
 import school.cesar.next.covid.dummydata.routes.DbDummyDataGenMain;
 
+import javax.persistence.*;
+import javax.persistence.EntityManager;
 
 public class Main {
+
+	private static EntityManager entityManager = getEntityManager();
+
+	private static EntityManager getEntityManager() {
+		EntityManagerFactory factory = Persistence.createEntityManagerFactory("next");
+		if (entityManager == null) {
+			entityManager = factory.createEntityManager();
+		}
+
+		return entityManager;
+	}
+
+
 	public static void main(String[] args) {
+		
 		 Scanner sc = new Scanner(System.in);
 		 System.out.println("Bem vindo ao Covid-NEXT");
 		 while (true) {
@@ -23,7 +39,8 @@ public class Main {
 			 System.out.println("0 - para sair");
 			 System.out.println("1 - para preencher banco com dados simulados (as rotas devem estar no C:)");
 			 System.out.println("2 - para marcar pessoa como confirmado");
-//			 System.out.println("3 - para inseri ponto manual pessoa");
+//			 System.out.println("3 - para inserir ponto manual pessoa");
+             System.out.println("4 - para atualizar os registros");
 			 int opcao = sc.nextInt();
 			 switch (opcao) {
 			 case 0:
@@ -83,7 +100,23 @@ public class Main {
 				 }
 				 System.out.println("Dados inseridos: " + resultado);
 				 break;
+			 case 4:
+				 
+			 	entityManager = getEntityManager();
+
+                 entityManager.getTransaction().begin();
+                 StoredProcedureQuery query = entityManager.createStoredProcedureQuery("atualizacaoRegistro");
+
+                 query.execute();
+
+                 entityManager.getTransaction().commit();
+                 System.out.println("Registros Atualizados");
+
+                 break;
+
 			 }
 		 }
 	}
+
+
 }
