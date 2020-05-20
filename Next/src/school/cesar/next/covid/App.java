@@ -20,7 +20,7 @@ import java.util.Date;
 import java.util.List;
 
 public class App {
-/*
+
     private static EntityManager entityManager = getEntityManager();
 
     private static EntityManager getEntityManager() {
@@ -30,7 +30,7 @@ public class App {
         }
 
         return entityManager;
-    } */
+    }
 
     public static void main(String[] args) {
         Javalin app = Javalin.create(config -> {
@@ -86,12 +86,11 @@ public class App {
         });
 
         app.post("/atualizar", ctx -> {
-            int i = 1;
-            /*entityManager = getEntityManager();
+            entityManager = getEntityManager();
             entityManager.getTransaction().begin();
             StoredProcedureQuery query = entityManager.createStoredProcedureQuery("atualizacaoRegistro");
             query.execute();
-            entityManager.getTransaction().commit(); */
+            entityManager.getTransaction().commit();
             ctx.redirect("/success.html");
         });
 
