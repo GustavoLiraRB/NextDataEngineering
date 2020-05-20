@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Covid 19</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="center">
+    <p style="font-size: 50px;">Painel Covid-19</p>
+
+    <form action="manual" method="post">
+        <div class="container">
+            <p>Qual a situação da pessoa:</p>
+            <input type="radio" id="saudavel" name="situacao" value="1">
+            <label for="saudavel">saudável</label><br>
+            <input type="radio" id="suspeito" name="situacao" value="2">
+            <label for="suspeito">suspeito</label><br>
+            <input type="radio" id="confirmado" name="situacao" value="3">
+            <label for="confirmado">confirmado</label><br>
+            <input type="radio" id="curado" name="situacao" value="4">
+            <label for="curado">curado</label><br>
+            <label for="data">Digite a data que deseja inserir:<br></label>
+            <input type="date" id="data" name="data" placeholder="DD/MM/AAAA"><br>
+            <label for="lat">Digite a latitude:<br></label>
+            <input type="text" id="lat" name="lat" placeholder="Latitude..."><br>
+            <label for="lon">Digite a longitude:<br></label>
+            <input type="text" id="lon" name="lon" placeholder="Longitude..."><br>
+        </div>
+        <input type="submit" style="padding: 25px 300px;" value="Enviar">
+    </form>
+
+    <input type="button" onclick="location.href = '/index.html';" style="background-color: #FF0000;" value="Voltar">
+</div>
+</body>
+</html>
