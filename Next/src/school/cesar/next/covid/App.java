@@ -8,6 +8,10 @@ import school.cesar.next.covid.dummydata.routes.DbDummyDataGenMain;
 import school.cesar.next.covid.ui.EntradaDadosSuspeitos;
 //import sun.jvm.hotspot.debugger.sparc.SPARCThreadContext;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.persistence.StoredProcedureQuery;
 import java.io.InputStream;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -16,6 +20,17 @@ import java.util.Date;
 import java.util.List;
 
 public class App {
+
+    private static EntityManager entityManager = getEntityManager();
+
+    private static EntityManager getEntityManager() {
+        EntityManagerFactory factory = Persistence.createEntityManagerFactory("next");
+        if (entityManager == null) {
+            entityManager = factory.createEntityManager();
+        }
+
+        return entityManager;
+    }
 
     public static void main(String[] args) {
         Javalin app = Javalin.create(config -> {
@@ -67,6 +82,15 @@ public class App {
             Date data = new SimpleDateFormat("yyyy-MM-dd").parse(resultadoData);
             double lat = Double.parseDouble(resultadoLat);
             double log = Double.parseDouble(resultadoLon);
+            ctx.redirect("/end.html");
+        });
+
+        app.post("/atualizar", ctx -> {
+            entityManager = getEntityManager();
+            entityManager.getTransaction().begin();
+            StoredProcedureQuery query = entityManager.createStoredProcedureQuery("atualizacaoRegistro");
+            query.execute();
+            entityManager.getTransaction().commit();
             ctx.redirect("/end.html");
         });
     }
