@@ -20,7 +20,7 @@ import java.util.Date;
 import java.util.List;
 
 public class App {
-
+/*
     private static EntityManager entityManager = getEntityManager();
 
     private static EntityManager getEntityManager() {
@@ -30,7 +30,7 @@ public class App {
         }
 
         return entityManager;
-    }
+    } */
 
     public static void main(String[] args) {
         Javalin app = Javalin.create(config -> {
@@ -50,7 +50,7 @@ public class App {
                 t2.start();
             }
             //new EntradaDadosSuspeitos(sc).run();
-            ctx.redirect("/end.html");
+            ctx.redirect("/process.html");
         });
 
 
@@ -70,7 +70,7 @@ public class App {
             if (data != null) {
                 resultado = daoR.marcarInfectado(pessoa, data, dias);
             }
-            ctx.redirect("/end.html");
+            ctx.redirect("/process.html");
         });
 
         app.post("/manual", ctx -> {
@@ -82,16 +82,22 @@ public class App {
             Date data = new SimpleDateFormat("yyyy-MM-dd").parse(resultadoData);
             double lat = Double.parseDouble(resultadoLat);
             double log = Double.parseDouble(resultadoLon);
-            ctx.redirect("/end.html");
+            ctx.redirect("/process.html");
         });
 
         app.post("/atualizar", ctx -> {
-            entityManager = getEntityManager();
+            int i = 1;
+            /*entityManager = getEntityManager();
             entityManager.getTransaction().begin();
             StoredProcedureQuery query = entityManager.createStoredProcedureQuery("atualizacaoRegistro");
             query.execute();
-            entityManager.getTransaction().commit();
-            ctx.redirect("/end.html");
+            entityManager.getTransaction().commit(); */
+            ctx.redirect("/success.html");
         });
+
+        app.post("/end", ctx -> {
+            app.stop();
+        });
+
     }
 }

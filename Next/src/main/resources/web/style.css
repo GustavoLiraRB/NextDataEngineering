@@ -10,39 +10,28 @@ body {
             box-sizing: border-box;
         }
 
-        input[type=text], select, textarea {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-            margin-top: 6px;
-            margin-bottom: 16px;
-            width: 30%;
-            resize: vertical;
-            text-align: center;
-        }
-
         input[type=submit] {
             background-color: #696969;
             color: white;
-            padding: 75px 300px;
-            width: 75%;
+            padding: 30px 250px;
+            width: 50%;
             border: none;
             margin: 10px;
             cursor: pointer;
             font-size: 17px;
+            border-radius: 100px;
         }
 
         input[type=button] {
             background-color: #696969;
             color: white;
-            padding: 50px 300px;
-            width: 75%;
+            padding: 30px 250px;
+            width: 50%;
             border: none;
             margin: 10px;
             cursor: pointer;
             font-size: 17px;
+            border-radius: 100px;
         }
 
         .center {
@@ -53,16 +42,10 @@ body {
             }
 
         .container {
-            border-radius: 5px;
+            border-radius: 20px;
             background-color: #696969;
-            padding: 20px;
-            width: 40%;
+            padding-top: 1px;
+            width: 50%;
             margin: auto;
             text-align: center;
-        }
-
-        .card {
-          box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-          transition: 0.3s;
-          width: 40%;
         }
