@@ -7,15 +7,17 @@
 </head>
 <body>
 <div class="center">
-    <p style="font-size: 50px;">Painel Covid-19</p>
+    <h1>Painel Covid-19</h1>
 
     <input type="button" onclick="location.href = '/datasim.html';" value="Preencher banco com dados simulados">
     <input type="button" onclick="location.href = '/dataconfirm.html';" value="Marcar pessoa como confirmado">
     <input type="button" onclick="location.href = '/datamanual.html';" value="Inserir ponto manual pessoa">
     <form action="atualizar" method="post">
-        <input type="submit" style="padding: 50px 300px;;" value="Atualizar registros">
+        <input type="submit" value="Atualizar registros">
     </form>
-    <input type="button" style="background-color: #FF0000;" value="Sair">
+    <form action="end" method="post">
+        <input type="submit" style="background-color: #FF0000" value="Sair">
+    </form>
     </div>
     </body>
     </html>
