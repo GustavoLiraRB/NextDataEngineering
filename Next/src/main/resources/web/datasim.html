@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Covid 19</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="center">
+    <p style="font-size: 50px;">Painel Covid-19</p>
+
+        <form action="sim" method="post">
+            <p>Escolha uma rota</p>
+            <div class="container">
+                <input type="radio" id="pcr-pilar" name="rota" value="1">
+                <label for="pcr-pilar">pcr-pilar</label><br>
+                <input type="radio" id="bv-pingo-beleleu" name="rota" value="2">
+                <label for="bv-pingo-beleleu">bv-pingo-beleleu</label><br>
+                <input type="radio" id="13maio-jbarros" name="rota" value="3">
+                <label for="13maio-jbarros">13maio-jbarros</label>
+                <p></p>
+                <label for="quantidade">Digite a quantidade de pessoas para rastreamento:<br></label>
+                <input type="number" id="quantidade" name="quantidade" placeholder="Quantidade de pessoas...">
+            </div>
+            <input type="submit" style="padding: 25px 300px;" value="Enviar">
+        </form>
+    <input type="button" onclick="location.href = '/index.html';" style="background-color: #FF0000;" value="Voltar">
+</div>
+</body>
+</html>
